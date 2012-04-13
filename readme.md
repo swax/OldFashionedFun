@@ -1,4 +1,6 @@
 ﻿
+##Old Fashioned Fun!
+
 Bring down windows with old fashioned fun!
 
 Give your windows in Windows real gravity!
@@ -13,8 +15,3 @@ Drag them off the screen and watch them bounce back.
 
 Endless fun.
 
-watch demo: http://www.youtube.com/watch?v=Uzi7DPrd2cU
-
-* Not tested on all versions of windows.
-
-- swax
