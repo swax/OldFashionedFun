@@ -1,0 +1,98 @@
+<!doctype html>
+<!-- The Time Machine GitHub pages theme was designed and developed by Jon Rohan, on Feb 7, 2012. -->
+<!-- Follow him for fun. http://twitter.com/jonrohan. Tail his code on http://github.com/jonrohan -->
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <link rel="stylesheet" href="stylesheets/stylesheet.css" media="screen"/>
+  <link rel="stylesheet" href="stylesheets/pygment_trac.css"/>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script type="text/javascript" src="javascripts/script.js"></script>
+
+  <title>Old Fashioned Fun</title>
+  <meta name="description" content="Apply gravity to windows in MS Windows">
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+</head>
+
+<body>
+
+  <div class="wrapper">
+    <header>
+      <h1 class="title">Old Fashioned Fun</h1>
+    </header>
+    <div id="container">
+      <p class="tagline">Apply gravity to windows in MS Windows</p>
+      <div id="main" role="main">
+        <div class="download-bar">
+        <div class="inner">
+          <a href="https://github.com/swax/OldFashionedFun/tarball/master" class="download-button tar"><span>Download</span></a>
+          <a href="https://github.com/swax/OldFashionedFun/zipball/master" class="download-button zip"><span>Download</span></a>
+          <a href="https://github.com/swax/OldFashionedFun" class="code">fork Old Fashioned Fun on GitHub</a>
+        </div>
+        <span class="blc"></span><span class="trc"></span>
+        </div>
+        <article class="markdown-body">
+          <h3>What</h3>
+
+<p>Old Fashioned Fun runs in the tray and gives the windows on your desktop gravity.  If you pull a window up it will fall back down.  Windows will also stack on top of other windows. You can throw windows by dragging them quickly and letting go. Windows will bounce off the taskbar, and be repelled by the sides of the screen.</p>
+
+<h3>Why</h3>
+
+<p>A demo of C# interacting with the Windows API. A simple physics demo. And because it's fun.</p>
+
+<h3>How</h3>
+
+<p>Periodically a a list of windows handles is queried from the system. The top of each window is treated like a shelf where other windows can sit. The dimensions of the desktop are also queried so that forces can be applied to windows that are off the screen. Here is some sample code below:</p>
+
+<div class="highlight">
+<pre><span class="c1">// enumerate open windows by registering a call back to OnEnumWindow</span>
+<span class="k">public</span> <span class="n">Win32</span><span class="p">.</span><span class="n">EnumWindowsProc</span> <span class="n">EnumWindow</span><span class="p">;</span>
+<span class="n">EnumWindow</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Win32</span><span class="p">.</span><span class="n">EnumWindowsProc</span><span class="p">(</span><span class="n">OnEnumWindow</span><span class="p">);</span>
+<span class="n">Win32</span><span class="p">.</span><span class="n">EnumWindows</span><span class="p">(</span><span class="n">EnumWindow</span><span class="p">,</span> <span class="n">IntPtr</span><span class="p">.</span><span class="n">Zero</span><span class="p">);</span>
+
+<span class="c1">// get the position of the top of the taskbar</span>
+<span class="n">Abd</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Win32</span><span class="p">.</span><span class="n">APPBARDATA</span><span class="p">();</span>
+<span class="n">Win32</span><span class="p">.</span><span class="n">SHAppBarMessage</span><span class="p">(</span><span class="n">Win32</span><span class="p">.</span><span class="n">ABM_GETTASKBARPOS</span><span class="p">,</span> <span class="k">ref</span> <span class="n">Abd</span><span class="p">);</span>
+<span class="n">TaskbarTop</span> <span class="p">=</span> <span class="n">Abd</span><span class="p">.</span><span class="n">rc</span><span class="p">.</span><span class="n">Top</span><span class="p">;</span>
+
+<span class="c1">// get the desktop dimensions</span>
+<span class="n">Desktop</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Win32</span><span class="p">.</span><span class="n">RECT</span><span class="p">();</span>
+<span class="n">Win32</span><span class="p">.</span><span class="n">GetWindowRect</span><span class="p">(</span><span class="n">Win32</span><span class="p">.</span><span class="n">GetDesktopWindow</span><span class="p">(),</span> <span class="k">ref</span> <span class="n">Desktop</span><span class="p">);</span>
+</pre>
+</div>
+
+        </article>
+      </div>
+    </div>
+    <footer>
+      <div class="owner">
+      <p><a href="https://github.com/swax" class="avatar"><img src="https://secure.gravatar.com/avatar/ce3265d4923e2a12ab2b0e3f8f6890d3?s=30&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png" width="48" height="48"/></a> <a href="https://github.com/swax">swax</a> maintains <a href="https://github.com/swax/OldFashionedFun">Old Fashioned Fun</a></p>
+      </div>
+      <div class="creds">
+        <small>This page generated using <a href="https://pages.github.com/">GitHub Pages</a><br/>theme by <a href="http://twitter.com/jonrohan/">Jon Rohan</a></small>
+      </div>
+    </footer>
+  </div>
+  <div class="current-section">
+    <a href="#top">Scroll to top</a>
+    <a href="https://github.com/swax/OldFashionedFun/tarball/master" class="tar">tar</a><a href="https://github.com/swax/OldFashionedFun/zipball/master" class="zip">zip</a><a href="" class="code">source code</a>
+    <p class="name"></p>
+  </div>
+
+            <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-30725447-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+</body>
+</html>
