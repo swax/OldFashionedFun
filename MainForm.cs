@@ -29,10 +29,15 @@ namespace OldFashionedFun
 
         const int ShelfTest = 5;
 
+        bool GravityEnabled = false;
+
 
         public MainForm()
         {
             InitializeComponent();
+
+            //WindowState = FormWindowState.Minimized;
+            //ShowInTaskbar = false;
 
             EnumWindow = new Win32.EnumWindowsProc(OnEnumWindow);
 
@@ -453,6 +458,7 @@ friendship song! the friendship song! the friendship song!", "Old Fashioned Fun"
         Win32.RECT Desktop;
 
         bool onoff = true;
+
         private void RefreshTimer_Tick(object sender, EventArgs e)
         {
             if (onoff)
@@ -479,32 +485,39 @@ friendship song! the friendship song! the friendship song!", "Old Fashioned Fun"
 
         private void button1_Click(object sender, EventArgs e)
         {
-            foreach (Win32.RECT shelf in Shelves)
-            {
-                Debug.WriteLine(string.Format("Top:{0}, Left:{1}, Right:{2}, Width{3}",
-                    shelf.Top, shelf.Left, shelf.Right, shelf.Width));
-                Debug.WriteLine("");
-            }
+            GravityEnabled = !GravityEnabled;
+
+            RefreshTimer.Enabled = GravityEnabled;
+            StepTimer.Enabled = GravityEnabled;
+
+            button1.Text = GravityEnabled ? "Gravity ON" : "Gravity OFF";
+
+            /*  foreach (Win32.RECT shelf in Shelves)
+              {
+                  Debug.WriteLine(string.Format("Top:{0}, Left:{1}, Right:{2}, Width{3}",
+                      shelf.Top, shelf.Left, shelf.Right, shelf.Width));
+                  Debug.WriteLine("");
+              }
 
 
 
-            /*IntPtr handle =  Win32.GetTopWindow(IntPtr.Zero);
+              IntPtr handle =  Win32.GetTopWindow(IntPtr.Zero);
 
-            Stopwatch sw = new Stopwatch();
-            sw.Start();
+              Stopwatch sw = new Stopwatch();
+              sw.Start();
 
-            int i = 0;
+              int i = 0;
 
-            IntPtr next = handle;
+              IntPtr next = handle;
 
-            // this process takes forever
-            while (next != IntPtr.Zero)
-            {
-                next = Win32.GetWindow(next, (uint)(Win32.GetWindow_Cmd.GW_HWNDNEXT ));
-                i++;
-            }
+              // this process takes forever
+              while (next != IntPtr.Zero)
+              {
+                  next = Win32.GetWindow(next, (uint)(Win32.GetWindow_Cmd.GW_HWNDNEXT ));
+                  i++;
+              }
 
-            */
+              */
 
 
             // can probably do some top sampling to see if top of window is hidden
